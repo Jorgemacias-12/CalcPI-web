@@ -93,8 +93,44 @@
     transition: 0.2s all;
 }
 
-.tabs-btn:active {
+.tabs-btn-active {
     background-color: #999;
+}
+
+.content-form {
+    display: flex;
+    justify-content: center; 
+    width: auto;
+    height: 92%;
+}
+
+.content-form > .form-method {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 50%;
+    height: 50%;
+    background-color: #2B313F;
+}
+
+.form-method  > .form-label{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.form-method > .method-input {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 10px;
+    width: 50%;
+    height: 10%;
+}
+
+.method-input {
+    
 }
 
 .section {
