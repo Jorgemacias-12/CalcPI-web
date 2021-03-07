@@ -88,12 +88,12 @@
     font-weight: bolder;
 }
 
-.tabs-btn:hover {
+.tab-btn:hover {
     background-color: #ddd;
     transition: 0.2s all;
 }
 
-.tabs-btn-active {
+.tab-btn-active {
     background-color: #999;
 }
 
@@ -169,6 +169,29 @@
 .result {
     width: 100%;
     height: 100%;
+}
+
+.result-closeable {
+    height: 18px;
+}
+
+.result-closeable > .closeable {
+    cursor: pointer;
+}
+
+.result-results {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    height: calc(100% - 18px);
+}
+
+.result-results > .textarea{
+    color: blue;
+    resize: none;
+    width: 90%;
+    height: 80%;
 }
 
 .section {
