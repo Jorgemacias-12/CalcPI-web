@@ -71,14 +71,14 @@
 }
 
 .main-content>.content-tabs {
-    display: flex; 
+    display: flex;
     align-items: center;
     width: auto;
     height: 8%;
     background-color: #f1f1f1
 }
 
-.content-tabs > .tabs-btn {
+.content-tabs>.tab-btn {
     width: auto;
     height: 100%;
     border: none;
@@ -99,12 +99,13 @@
 
 .content-form {
     display: flex;
-    justify-content: center; 
+    flex-flow: column;
+    align-items: center;
     width: auto;
     height: 92%;
 }
 
-.content-form > .form-method {
+.content-form>.form-method {
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -114,23 +115,60 @@
     background-color: #2B313F;
 }
 
-.form-method  > .form-label{
+.form-method>.form-label {
     color: white;
     font-size: 18px;
     font-weight: bold;
 }
 
-.form-method > .method-input {
+.form-method>.method-input {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     margin-top: 10px;
     width: 50%;
     height: 10%;
 }
 
-.method-input {
-    
+.method-input>.input {
+    height: 30px;
+    border: 2px solid #0198E1;
+    padding-left: 10px;
+    background-color: #fafafa;
+}
+
+.form-result {
+    background-color: #1ed760;
+    margin-top: 20px;
+    width: 50%;
+    height: 40%;
+}
+
+.method-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 10%;
+}
+
+.method-button>.button {
+    width: 45%;
+    height: 32px;
+    border: 2px solid transparent;
+    background-color: #fafafa;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button:hover {
+    border: 2px solid #60AFFE;
+    transition: 0.2s all
+}
+
+.result {
+    width: 100%;
+    height: 100%;
 }
 
 .section {
