@@ -26,17 +26,17 @@
             <main class="main">
                 <div class="main-content">
                     <div class="content-tabs">
-                        <button class="tabs-btn" id="ma-1">
+                        <button class="tab-btn" id="ma-1">
                             Método de Arquímedes
                         </button>
-                        <button class="tabs-btn" id="mm-2">
+                        <button class="tab-btn" id="mm-2">
                             Método de Montecarlo
                         </button>
-                        <button class="tabs-btn" id="mb-3">
+                        <button class="tab-btn" id="mb-3">
                             Método de Basílea
                         </button>
                     </div>
-                    <form action="scripts/app.js" class="content-form" id="form">
+                    <form action="scripts/app.js" class="content-form" id="form" onsubmit="return false;">
                         <div class="form-method">
                             <label for="ma-n" class="form-label">
                                 Número de lados máximo del polígono:
@@ -44,7 +44,17 @@
                             <div class="method-input">
                                 <input type="text" class="input" id="ma-n">
                             </div>
+                            <div class="method-button">
+                                <button class="button" id="form-btn">
+                                    Calcular valor de Pi
+                                </button>
+                            </div>
+                            <!-- <div class="form-result">
+                                
+                            </div> -->
+
                         </div>
+
                     </form>
                 </div>
             </main>
