@@ -13,6 +13,9 @@ const closeError = (id) => {
     document.getElementById('cls').addEventListener("click", () => {
         document.getElementById(id).innerHTML = "";
     });
+    setTimeout(() => {
+        document.getElementById(id).innerHTML="";
+    }, 2000)
 }
 
 const MA = () => {
@@ -133,8 +136,8 @@ const calculatePi = (method_number) => {
     switch (method_number) {
         case 1:
             if (document.getElementById('ma-n').value == "") {
-                document.getElementById('er').innerHTML = 
-                `
+                document.getElementById('er').innerHTML =
+                    `
                 <div class="error">
                     <div class="error-closeable">
                         <i class="fas fa-times closeable" id="cls"></i>
