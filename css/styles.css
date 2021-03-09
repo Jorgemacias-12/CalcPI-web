@@ -153,10 +153,11 @@
 }
 
 .method-button>.button {
+    color: white;
+    background-color: #bb2929;
     width: 45%;
     height: 32px;
     border: 2px solid transparent;
-    background-color: #fafafa;
     cursor: pointer;
     font-weight: bold;
 }
@@ -176,7 +177,15 @@
 }
 
 .result-closeable > .closeable {
+    margin-left: 5px;
+    margin-top: 2x;
+    color: white;
     cursor: pointer;
+}
+
+.closeable:hover {
+    color: black;
+    transition: 0.2s all
 }
 
 .result-results {
@@ -188,10 +197,13 @@
 }
 
 .result-results > .textarea{
-    color: blue;
+    color: white;
+    border: none;
+    background-color: transparent;
     resize: none;
     width: 90%;
     height: 80%;
+    text-align: center;
 }
 
 .section {
