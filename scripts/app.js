@@ -125,10 +125,19 @@ const MB = () => {
 const calculatePi = (method_number) => {
     switch (method_number) {
         case 1:
+            if (document.getElementById('ma-n').value == "") {
+
+            }
             break;
         case 2:
+            if (document.getElementById('').value == "") {
+
+            }
             break;
         case 3:
+            if (document.getElementById('').value == "") {
+                
+            }
             break;
     }
 }
