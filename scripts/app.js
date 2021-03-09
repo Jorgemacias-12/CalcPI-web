@@ -164,6 +164,11 @@ const calculateMM = (n) => {
     err = Math.sqrt(err);
 }
 
-const calculateMB = () => {
-
+const calculateMB = (n) => {
+    let s = 0;
+    for (let i = 0; i < n; i++) {
+        s = s + 1 / Math.pow(i + 1, 2);
+    }
+    let pi = Math.sqrt(6 * s);
+    console.log(pi);
 }
