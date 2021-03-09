@@ -150,6 +150,20 @@ const calculatePi = (method_number) => {
                 </div>
                 `;
                 closeError("er");
+            } else {
+                document.getElementById('er').innerHTML = 
+                `<div class="result">
+                    <div class="result-closeable">
+                        <i class="fas fa-times closeable" id="cls" ></i>
+                    </div>
+                    <div class="result-results">
+                        <textarea name="" class="textarea" id="area" cols="30" rows="10" disabled>
+
+                        </textarea>
+                    </div>
+                </div>
+                `;
+                closeError("er");
             }
             
             break;
