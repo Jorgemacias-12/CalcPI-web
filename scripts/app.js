@@ -2,6 +2,7 @@ window.onload = () => {
     document.getElementById('ma-1').addEventListener("click", () => { MA(); });
     document.getElementById('mm-2').addEventListener("click", () => { MM(); });
     document.getElementById('mb-3').addEventListener("click", () => { MB(); });
+    document.getElementById('form-btn').addEventListener("click", () => { calculatePi(1) });
 }
 
 const MA = () => {
@@ -36,6 +37,7 @@ const MA = () => {
         </div>
     </div>
     `;
+    document.getElementById('form-btn').addEventListener("click", () => { calculatePi(1) });
 }
 
 const MM = () => {
@@ -70,6 +72,7 @@ const MM = () => {
         </div>
     </div>
     `;
+    document.getElementById('form-btn').addEventListener("click", () => { calculatePi(2) });
 }
 
 const MB = () => {
@@ -104,6 +107,7 @@ const MB = () => {
         </div>
     </div>
     `;
+    document.getElementById('form-btn').addEventListener("click", () => { calculatePi(3) });
 }
 
 const calculatePi = (method_number) => {
