@@ -149,8 +149,9 @@ const calculatePi = (method_number) => {
                     </div>
                 </div>
                 `;
+                closeError("er");
             }
-            closeError("er");
+            
             break;
         case 2:
             if (document.getElementById('mb-n').value == "") {
@@ -167,8 +168,9 @@ const calculatePi = (method_number) => {
                     </div>
                 </div>
                 `;
+                closeError("er");
             }
-            closeError("er");
+            
             break;
         case 3:
             if (document.getElementById('mm-n').value == "") {
@@ -185,8 +187,9 @@ const calculatePi = (method_number) => {
                     </div>
                 </div>
                 `;
+                closeError("er");
             }
-            closeError("er");
+            
             break;
     }
 }
