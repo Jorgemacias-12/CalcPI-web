@@ -3,6 +3,9 @@ window.onload = () => {
     document.getElementById('mm-2').addEventListener("click", () => { MM(); });
     document.getElementById('mb-3').addEventListener("click", () => { MB(); });
     document.getElementById('form-btn').addEventListener("click", () => { calculatePi(1) });
+    setInputFilter(document.getElementById("ma-n"), function (value) {
+        return /^-?\d*$/.test(value);
+    });
 }
 
 const MA = () => {
@@ -38,6 +41,9 @@ const MA = () => {
     </div>
     `;
     document.getElementById('form-btn').addEventListener("click", () => { calculatePi(1) });
+    setInputFilter(document.getElementById("ma-n"), function (value) {
+        return /^-?\d*$/.test(value);
+    });
 }
 
 const MM = () => {
@@ -59,7 +65,7 @@ const MM = () => {
             Números de dardos a lazar:
         </label>
         <div class="method-input">
-            <input type="text" class="input" id="mb-n">
+            <input type="text" class="input" id="mm-n">
         </div>
         <div class="method-button">
             <button class="button" id="form-btn">
@@ -73,6 +79,9 @@ const MM = () => {
     </div>
     `;
     document.getElementById('form-btn').addEventListener("click", () => { calculatePi(2) });
+    setInputFilter(document.getElementById("mm-n"), function (value) {
+        return /^-?\d*$/.test(value);
+    });
 }
 
 const MB = () => {
@@ -90,11 +99,11 @@ const MB = () => {
     document.getElementById('form').innerHTML =
         `
     <div class="form-method">
-        <label for="mm-n" class="form-label">
+        <label for="mb-n" class="form-label">
             Números de terminos que quieres sumar:
         </label>
         <div class="method-input">
-            <input type="text" class="input" id="mm-n">
+            <input type="text" class="input" id="mb-n">
         </div>
         <div class="method-button">
             <button class="button" id="form-btn">
@@ -108,6 +117,9 @@ const MB = () => {
     </div>
     `;
     document.getElementById('form-btn').addEventListener("click", () => { calculatePi(3) });
+    setInputFilter(document.getElementById("mb-n"), function (value) {
+        return /^-?\d*$/.test(value);
+    });
 }
 
 const calculatePi = (method_number) => {
@@ -175,4 +187,21 @@ const calculateMB = (n) => {
     }
     let pi = Math.sqrt(6 * s);
     console.log(pi);
+}
+
+function setInputFilter(textbox, inputFilter) {
+    ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+        textbox.addEventListener(event, function () {
+            if (inputFilter(this.value)) {
+                this.oldValue = this.value;
+                this.oldSelectionStart = this.selectionStart;
+                this.oldSelectionEnd = this.selectionEnd;
+            } else if (this.hasOwnProperty("oldValue")) {
+                this.value = this.oldValue;
+                this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+            } else {
+                this.value = "";
+            }
+        });
+    });
 }
