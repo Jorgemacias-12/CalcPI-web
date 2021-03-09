@@ -211,6 +211,17 @@
     text-align: center;
 }
 
+.error {
+    height: 35%;
+    background-color: #ff3333;
+}
+
+.error-text > .text {
+    font-size: 18px;
+    color: white;
+    text-align: center;
+}
+
 .section {
     display: flex;
     justify-content: center;
