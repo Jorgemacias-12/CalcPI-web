@@ -105,3 +105,26 @@ const MB = () => {
     </div>
     `;
 }
+
+const calculatePi = (method_number) => {
+    switch (method_number) {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+    }
+}
+
+const calculateMA = () => {
+
+}
+
+const calculateMM = () => {
+
+}
+
+const calculateMB = () => {
+    
+}
