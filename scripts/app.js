@@ -1,8 +1,8 @@
 window.onload = () => {
     document.getElementById('ma-1').classList.add("tab-btn-active");
     document.getElementById('ma-1').addEventListener("click", () => { MA(); });
-    document.getElementById('mm-2').addEventListener("click", () => { MM(); });
-    document.getElementById('mb-3').addEventListener("click", () => { MB(); });
+    document.getElementById('mb-2').addEventListener("click", () => { MB(); });
+    document.getElementById('mm-3').addEventListener("click", () => { MM();});
     document.getElementById('form-btn').addEventListener("click", () => { calculatePi(1) });
     setInputFilter(document.getElementById("ma-n"), function (value) {
         return /^-?\d*$/.test(value);
@@ -19,8 +19,8 @@ const closeError = (id) => {
 }
 
 const MA = () => {
-    const method_2 = document.getElementById('mm-2');
-    const method_3 = document.getElementById('mb-3');
+    const method_2 = document.getElementById('mb-2');
+    const method_3 = document.getElementById('mm-3');
     if (method_2.classList.contains("tab-btn-active")) {
         method_2.classList.remove("tab-btn-active")
         document.getElementById('ma-1').classList.add("tab-btn-active");
@@ -58,59 +58,21 @@ const MA = () => {
 
 const MM = () => {
     const method_1 = document.getElementById('ma-1');
-    const method_3 = document.getElementById('mb-3');
+    const method_3 = document.getElementById('mb-2');
     if (method_1.classList.contains("tab-btn-active")) {
         method_1.classList.remove("tab-btn-active")
-        document.getElementById('mm-2').classList.add("tab-btn-active");
+        document.getElementById('mm-3').classList.add("tab-btn-active");
     } else if (method_3.classList.contains("tab-btn-active")) {
         method_3.classList.remove("tab-btn-active")
-        document.getElementById('mm-2').classList.add("tab-btn-active");
+        document.getElementById('mm-3').classList.add("tab-btn-active");
     } else {
-        document.getElementById('mm-2').classList.add("tab-btn-active");
+        document.getElementById('mm-3').classList.add("tab-btn-active");
     }
     document.getElementById('form').innerHTML =
         `
     <div class="form-method">
         <label for="mb-n" class="form-label">
             Números de dardos a lazar:
-        </label>
-        <div class="method-input">
-            <input type="text" class="input" id="mm-n">
-        </div>
-        <div class="method-button">
-            <button class="button" id="form-btn">
-                Calcular valor de Pi
-            </button>
-        </div>
-
-        <div id="er">
-
-        </div>
-    </div>
-    `;
-    document.getElementById('form-btn').addEventListener("click", () => { calculatePi(2) });
-    setInputFilter(document.getElementById("mm-n"), function (value) {
-        return /^-?\d*$/.test(value);
-    });
-}
-
-const MB = () => {
-    const method_1 = document.getElementById('ma-1');
-    const method_2 = document.getElementById('mm-2');
-    if (method_1.classList.contains("tab-btn-active")) {
-        method_1.classList.remove("tab-btn-active")
-        document.getElementById('mb-3').classList.add("tab-btn-active");
-    } else if (method_2.classList.contains("tab-btn-active")) {
-        method_2.classList.remove("tab-btn-active")
-        document.getElementById('mb-3').classList.add("tab-btn-active");
-    } else {
-        document.getElementById('mb-3').classList.add("tab-btn-active");
-    }
-    document.getElementById('form').innerHTML =
-        `
-    <div class="form-method">
-        <label for="mb-n" class="form-label">
-            Números de terminos que quieres sumar:
         </label>
         <div class="method-input">
             <input type="text" class="input" id="mb-n">
@@ -126,8 +88,46 @@ const MB = () => {
         </div>
     </div>
     `;
-    document.getElementById('form-btn').addEventListener("click", () => { calculatePi(3) });
+    document.getElementById('form-btn').addEventListener("click", () => { calculatePi(2) });
     setInputFilter(document.getElementById("mb-n"), function (value) {
+        return /^-?\d*$/.test(value);
+    });
+}
+
+const MB = () => {
+    const method_1 = document.getElementById('ma-1');
+    const method_2 = document.getElementById('mm-3');
+    if (method_1.classList.contains("tab-btn-active")) {
+        method_1.classList.remove("tab-btn-active")
+        document.getElementById('mb-2').classList.add("tab-btn-active");
+    } else if (method_2.classList.contains("tab-btn-active")) {
+        method_2.classList.remove("tab-btn-active")
+        document.getElementById('mb-2').classList.add("tab-btn-active");
+    } else {
+        document.getElementById('mb-2').classList.add("tab-btn-active");
+    }
+    document.getElementById('form').innerHTML =
+        `
+    <div class="form-method">
+        <label for="mb-n" class="form-label">
+            Números de terminos que quieres sumar:
+        </label>
+        <div class="method-input">
+            <input type="text" class="input" id="mm-n">
+        </div>
+        <div class="method-button">
+            <button class="button" id="form-btn">
+                Calcular valor de Pi
+            </button>
+        </div>
+
+        <div id="er">
+
+        </div>
+    </div>
+    `;
+    document.getElementById('form-btn').addEventListener("click", () => { calculatePi(3) });
+    setInputFilter(document.getElementById("mm-n"), function (value) {
         return /^-?\d*$/.test(value);
     });
 }
@@ -153,7 +153,7 @@ const calculatePi = (method_number) => {
             closeError("er");
             break;
         case 2:
-            if (document.getElementById('').value == "") {
+            if (document.getElementById('mb-n').value == "") {
                 document.getElementById('er').innerHTML =
                     `
                 <div class="error">
@@ -171,7 +171,7 @@ const calculatePi = (method_number) => {
             closeError("er");
             break;
         case 3:
-            if (document.getElementById('').value == "") {
+            if (document.getElementById('mm-n').value == "") {
                 document.getElementById('er').innerHTML =
                     `
                 <div class="error">
