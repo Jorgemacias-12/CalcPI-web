@@ -16,7 +16,26 @@ const MA = () => {
     } else {
         document.getElementById('ma-1').classList.add("tab-btn-active");
     }
-    document.getElementById('form').innerHTML = "";
+    document.getElementById('form').innerHTML = 
+    `
+    <div class="form-method">
+        <label for="ma-n" class="form-label">
+            Número de lados máximo del polígono:
+        </label>
+        <div class="method-input">
+            <input type="text" class="input" id="ma-n">
+        </div>
+        <div class="method-button">
+            <button class="button" id="form-btn">
+                Calcular valor de Pi
+            </button>
+        </div>
+
+        <div id="er">
+
+        </div>
+    </div>
+    `;
 }
 
 const MM = () => {
@@ -31,7 +50,26 @@ const MM = () => {
     } else {
         document.getElementById('mm-2').classList.add("tab-btn-active");
     }
-    document.getElementById('form').innerHTML = "";
+    document.getElementById('form').innerHTML = 
+    `
+    <div class="form-method">
+        <label for="mb-n" class="form-label">
+            Números de dardos a lazar:
+        </label>
+        <div class="method-input">
+            <input type="text" class="input" id="mb-n">
+        </div>
+        <div class="method-button">
+            <button class="button" id="form-btn">
+                Calcular valor de Pi
+            </button>
+        </div>
+
+        <div id="er">
+
+        </div>
+    </div>
+    `;
 }
 
 const MB = () => {
@@ -46,5 +84,24 @@ const MB = () => {
     } else {
         document.getElementById('mb-3').classList.add("tab-btn-active");
     }
-    document.getElementById('form').innerHTML = "";
+    document.getElementById('form').innerHTML = 
+    `
+    <div class="form-method">
+        <label for="mm-n" class="form-label">
+            Números de terminos que quieres sumar:
+        </label>
+        <div class="method-input">
+            <input type="text" class="input" id="mm-n">
+        </div>
+        <div class="method-button">
+            <button class="button" id="form-btn">
+                Calcular valor de Pi
+            </button>
+        </div>
+
+        <div id="er">
+
+        </div>
+    </div>
+    `;
 }
