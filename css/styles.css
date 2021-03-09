@@ -132,12 +132,16 @@
 
 .method-input>.input {
     height: 30px;
-    border: 2px solid #0198E1;
+    border: 2px solid transparent;
     padding-left: 10px;
     background-color: #fafafa;
 }
 
-.form-result {
+.input:hover {
+    border: 2px solid #0198E1;
+}
+
+#er {
     background-color: transparent;
     margin-top: 20px;
     width: 50%;
@@ -177,9 +181,9 @@
     height: 18px;
 }
 
-.result-closeable > .closeable {
+.result-closeable>.closeable {
     margin-left: 5px;
-    margin-top: 2x;
+    margin-top: 2px;
     color: white;
     cursor: pointer;
 }
@@ -191,13 +195,13 @@
 
 .result-results {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     width: 100%;
     height: calc(100% - 18px);
 }
 
-.result-results > .textarea{
+.result-results>.textarea {
     color: white;
     border: none;
     background-color: transparent;
