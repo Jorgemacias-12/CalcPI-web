@@ -1,10 +1,17 @@
 window.onload = () => {
+    document.getElementById('ma-1').classList.add("tab-btn-active");
     document.getElementById('ma-1').addEventListener("click", () => { MA(); });
     document.getElementById('mm-2').addEventListener("click", () => { MM(); });
     document.getElementById('mb-3').addEventListener("click", () => { MB(); });
     document.getElementById('form-btn').addEventListener("click", () => { calculatePi(1) });
     setInputFilter(document.getElementById("ma-n"), function (value) {
         return /^-?\d*$/.test(value);
+    });
+}
+
+const closeError = (id) => {
+    document.getElementById('cls').addEventListener("click", () => {
+        document.getElementById(id).innerHTML = "";
     });
 }
 
@@ -126,18 +133,57 @@ const calculatePi = (method_number) => {
     switch (method_number) {
         case 1:
             if (document.getElementById('ma-n').value == "") {
-
+                document.getElementById('er').innerHTML = 
+                `
+                <div class="error">
+                    <div class="error-closeable">
+                        <i class="fas fa-times closeable" id="cls"></i>
+                    </div>
+                    <div class="error-text">
+                        <p class="text">
+                            Error: el campo está vacio.
+                        </p>
+                    </div>
+                </div>
+                `;
             }
+            closeError("er");
             break;
         case 2:
             if (document.getElementById('').value == "") {
-
+                document.getElementById('er').innerHTML =
+                    `
+                <div class="error">
+                    <div class="error-closeable">
+                        <i class="fas fa-times closeable" id="cls"></i>
+                    </div>
+                    <div class="error-text">
+                        <p class="text">
+                            Error: el campo está vacio.
+                        </p>
+                    </div>
+                </div>
+                `;
             }
+            closeError("er");
             break;
         case 3:
             if (document.getElementById('').value == "") {
-                
+                document.getElementById('er').innerHTML =
+                    `
+                <div class="error">
+                    <div class="error-closeable">
+                        <i class="fas fa-times closeable" id="cls"></i>
+                    </div>
+                    <div class="error-text">
+                        <p class="text">
+                            Error: el campo está vacio.
+                        </p>
+                    </div>
+                </div>
+                `;
             }
+            closeError("er");
             break;
     }
 }
