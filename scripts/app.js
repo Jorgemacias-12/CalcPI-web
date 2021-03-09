@@ -131,11 +131,37 @@ const calculateMA = (n) => {
     }
     let pi = (a / 2 / r + b / 2 / r) / 2;
     let err = Math.abs(a / 2 / r - b / 2 / r) / 2;
-    console.log(pi);
 }
 
-const calculateMM = () => {
-
+const calculateMM = (n) => {
+    const r = 1;
+    let x;
+    let y;
+    let cota = 10;
+    let c = 0;
+    let pi_arr = new Array(cota);
+    for (let i = 0; i < cota; i++) {
+        for (let j = 0; j < n; j++) {
+            x = Math.random();
+            y = Math.random();
+            x = x * r;
+            y = y * r;
+            if (x * x + y * y < r * r) {
+                c++
+            }
+        }
+        pi_arr[i] = 4 * c / n;
+        c = 0;
+    }
+    let pi = 0;
+    let err = 0;
+    for (let i = 0; i < cota; i++) {
+        pi = pi_arr[i] / cota + pi;
+    }
+    for (let i = 0; i < cota; i++) {
+        err = err + Math.pow(pi - pi_arr[i], 2) / cota;
+    }
+    err = Math.sqrt(err);
 }
 
 const calculateMB = () => {
