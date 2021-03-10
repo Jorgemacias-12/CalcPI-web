@@ -94,7 +94,6 @@
 }
 
 .content-tabs > .tab-btn-active {
-    background-color: #999;
     border-bottom: 4px solid #dc143c;
 }
 
