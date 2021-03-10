@@ -2,7 +2,7 @@ window.onload = () => {
     document.getElementById('ma-1').classList.add("tab-btn-active");
     document.getElementById('ma-1').addEventListener("click", () => { MA(); });
     document.getElementById('mb-2').addEventListener("click", () => { MB(); });
-    document.getElementById('mm-3').addEventListener("click", () => { MM();});
+    document.getElementById('mm-3').addEventListener("click", () => { MM(); });
     document.getElementById('form-btn').addEventListener("click", () => { calculatePi(1) });
     setInputFilter(document.getElementById("ma-n"), function (value) {
         return /^-?\d*$/.test(value);
@@ -14,7 +14,7 @@ const closeError = (id) => {
         document.getElementById(id).innerHTML = "";
     });
     setTimeout(() => {
-        document.getElementById(id).innerHTML="";
+        document.getElementById(id).innerHTML = "";
     }, 2000)
 }
 
@@ -151,8 +151,8 @@ const calculatePi = (method_number) => {
                 `;
                 closeError("er");
             } else {
-                document.getElementById('er').innerHTML = 
-                `<div class="result">
+                document.getElementById('er').innerHTML =
+                    `<div class="result">
                     <div class="result-closeable">
                         <i class="fas fa-times closeable" id="cls" ></i>
                     </div>
@@ -165,7 +165,6 @@ const calculatePi = (method_number) => {
                 `;
                 closeError("er");
             }
-            
             break;
         case 2:
             if (document.getElementById('mb-n').value == "") {
@@ -183,8 +182,21 @@ const calculatePi = (method_number) => {
                 </div>
                 `;
                 closeError("er");
+            } else {
+                document.getElementById('er').innerHTML =
+                    `<div class="result">
+                    <div class="result-closeable">
+                        <i class="fas fa-times closeable" id="cls" ></i>
+                    </div>
+                    <div class="result-results">
+                        <textarea name="" class="textarea" id="area" cols="30" rows="10" disabled>
+
+                        </textarea>
+                    </div>
+                </div>
+                `;
+                closeError("er");
             }
-            
             break;
         case 3:
             if (document.getElementById('mm-n').value == "") {
@@ -202,8 +214,21 @@ const calculatePi = (method_number) => {
                 </div>
                 `;
                 closeError("er");
+            } else {
+                document.getElementById('er').innerHTML =
+                    `<div class="result">
+                    <div class="result-closeable">
+                        <i class="fas fa-times closeable" id="cls" ></i>
+                    </div>
+                    <div class="result-results">
+                        <textarea name="" class="textarea" id="area" cols="30" rows="10" disabled>
+
+                        </textarea>
+                    </div>
+                </div>
+                `;
+                closeError("er");
             }
-            
             break;
     }
 }

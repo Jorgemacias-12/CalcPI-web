@@ -81,7 +81,7 @@
 .content-tabs>.tab-btn {
     width: auto;
     height: 100%;
-    border: none;
+    border: unset;
     padding: 10px;
     cursor: pointer;
     font-size: 16px;
@@ -93,8 +93,9 @@
     transition: 0.2s all;
 }
 
-.tab-btn-active {
+.content-tabs > .tab-btn-active {
     background-color: #999;
+    border-bottom: 4px solid #dc143c;
 }
 
 .content-form {
