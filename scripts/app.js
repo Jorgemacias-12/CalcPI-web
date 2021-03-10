@@ -13,9 +13,6 @@ const closeError = (id) => {
     document.getElementById('cls').addEventListener("click", () => {
         document.getElementById(id).innerHTML = "";
     });
-    setTimeout(() => {
-        document.getElementById(id).innerHTML = "";
-    }, 2000)
 }
 
 const MA = () => {
@@ -157,9 +154,7 @@ const calculatePi = (method_number) => {
                         <i class="fas fa-times closeable" id="cls" ></i>
                     </div>
                     <div class="result-results">
-                        <textarea name="" class="textarea" id="area" cols="30" rows="10" disabled>
-
-                        </textarea>
+                        <textarea name="" class="textarea" id="area" cols="30" rows="10" disabled></textarea>
                     </div>
                 </div>
                 `;
@@ -189,9 +184,7 @@ const calculatePi = (method_number) => {
                         <i class="fas fa-times closeable" id="cls" ></i>
                     </div>
                     <div class="result-results">
-                        <textarea name="" class="textarea" id="area" cols="30" rows="10" disabled>
-
-                        </textarea>
+                        <textarea name="" class="textarea" id="area" cols="30" rows="10" disabled></textarea>
                     </div>
                 </div>
                 `;
@@ -222,11 +215,11 @@ const calculatePi = (method_number) => {
                     </div>
                     <div class="result-results">
                         <textarea name="" class="textarea" id="area" cols="30" rows="10" disabled>
-
                         </textarea>
                     </div>
                 </div>
                 `;
+                document.getElementById('area').innerText = `Valor de pi: ${calculateMM(parseInt(document.getElementById('mm-n').value))}`;
                 closeError("er");
             }
             break;
@@ -278,6 +271,7 @@ const calculateMM = (n) => {
         err = err + Math.pow(pi - pi_arr[i], 2) / cota;
     }
     err = Math.sqrt(err);
+    return pi, err;
 }
 
 const calculateMB = (n) => {
