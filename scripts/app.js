@@ -132,7 +132,8 @@ const MB = () => {
 const calculatePi = (method_number) => {
     switch (method_number) {
         case 1:
-            if (document.getElementById('ma-n').value == "") {
+            let inputValue = document.getElementById('ma-n').value;
+            if (inputValue == "") {
                 document.getElementById('er').innerHTML =
                     `
                 <div class="error">
@@ -154,10 +155,11 @@ const calculatePi = (method_number) => {
                         <i class="fas fa-times closeable" id="cls" ></i>
                     </div>
                     <div class="result-results">
-                        <textarea name="" class="textarea" id="area" cols="30" rows="10" disabled></textarea>
+                        <p class ="text" id="text" ></p>
                     </div>
                 </div>
                 `;
+                showResult(1);
                 closeError("er");
             }
             break;
@@ -184,10 +186,11 @@ const calculatePi = (method_number) => {
                         <i class="fas fa-times closeable" id="cls" ></i>
                     </div>
                     <div class="result-results">
-                        <textarea name="" class="textarea" id="area" cols="30" rows="10" disabled></textarea>
+                        <p class ="text" id="text" ></p>
                     </div>
                 </div>
                 `;
+                showResult(2);
                 closeError("er");
             }
             break;
@@ -200,7 +203,7 @@ const calculatePi = (method_number) => {
                         <i class="fas fa-times closeable" id="cls"></i>
                     </div>
                     <div class="error-text">
-                        <p class="text">
+                        <p class ="text" id="text" >
                             Error: el campo está vacio.
                         </p>
                     </div>
@@ -214,19 +217,41 @@ const calculatePi = (method_number) => {
                         <i class="fas fa-times closeable" id="cls" ></i>
                     </div>
                     <div class="result-results">
-                        <textarea name="" class="textarea" id="area" cols="30" rows="10" disabled>
-                        </textarea>
+                        <p class ="text" id="text"></p>
                     </div>
                 </div>
                 `;
-                document.getElementById('area').innerText = `Valor de pi: ${calculateMM(parseInt(document.getElementById('mm-n').value))}`;
+                showResult(3);
                 closeError("er");
             }
             break;
     }
 }
 
-const calculateMA = (n) => {
+const showResult = (n) => {
+    let input;
+    let resultObject;
+    let textarea = document.getElementById('text');
+    switch (n) {
+        case 1:
+            input = document.getElementById('ma-n').value;
+            resultObject = calculateMA(input);
+            textarea.innerText = `Con un polígono de ${resultObject._sides} lados, obtenemos: Pi = ${resultObject._pi}  +/- ${resultObject._err}. O dicho de otra manera, el valor de pi se encuentra entre ${parseFloat(resultObject._pi + resultObject._err)} y ${parseFloat(resultObject._pi - resultObject._err)}`;
+            break;
+        case 2:
+            input = document.getElementById('mb-n').value;
+            resultObject = calculateMM(input);
+            textarea.innerText = `Pi = ${resultObject._pi} +/- ${resultObject._err} o dicho de otra manera, el valor de pi se encuentra entre ${parseFloat(resultObject._pi + resultObject._err)} y ${parseFloat(resultObject._pi - resultObject._err)}`;
+            break;
+        case 3:
+            input = document.getElementById('mm-n').value;
+            resultObject = calculateMB(input);
+            textarea.innerText = `Pi = ${resultObject._pi}`;
+            break;
+    }
+}
+
+let calculateMA = (n) => {
     const r = 1;
     let a;
     let b;
@@ -239,7 +264,8 @@ const calculateMA = (n) => {
         m = m * 2;
     }
     let pi = (a / 2 / r + b / 2 / r) / 2;
-    let err = Math.abs(a / 2 / r - b / 2 / r) / 2;
+    let err = Math.abs(a / 2 / r - b / 2 / r) / 2;  
+    return new ResultTemplate(m, pi, err);
 }
 
 const calculateMM = (n) => {
@@ -271,7 +297,7 @@ const calculateMM = (n) => {
         err = err + Math.pow(pi - pi_arr[i], 2) / cota;
     }
     err = Math.sqrt(err);
-    return pi, err;
+    return new ResultTemplate(null, pi, err);
 }
 
 const calculateMB = (n) => {
@@ -280,7 +306,7 @@ const calculateMB = (n) => {
         s = s + 1 / Math.pow(i + 1, 2);
     }
     let pi = Math.sqrt(6 * s);
-    console.log(pi);
+    return new ResultTemplate(null, pi, null);
 }
 
 function setInputFilter(textbox, inputFilter) {
