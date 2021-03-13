@@ -227,4 +227,18 @@
     grid-area: section;
 }
 
-.section>.section-content {}
+.section>.section-content {
+    background-color: #1e1e1e;
+    width: 95%;
+    height: 95%;
+}
+
+.section-content :is(.content-title) {}
+
+.section-content :is(.content-video) {
+
+}
+
+.section-content :is(.content-about) {
+
+}
