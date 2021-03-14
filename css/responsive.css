@@ -1,7 +1,12 @@
 @media screen and (max-width: 1280px) {
     body :is(.app) {
-        height: 800px;
+        height: 100%;
         grid-template-rows: 60px 740px;
     }
-
+    .method-button {
+        margin-top: 10px;
+    }
+    .method-button > .button {
+        width: 64%;
+    }
 }
