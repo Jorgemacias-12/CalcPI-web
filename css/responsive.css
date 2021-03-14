@@ -73,5 +73,15 @@
 @media screen and (max-width: 715px) {
     .page-title {
         font-size: 30px;
-    }   
+    }
+}
+
+@media screen and (max-width: 477px) {
+    body :is(.app) {
+        height: 1600px;
+        grid-template-rows: 120px 1000px;
+    }
+    .header {
+        flex-flow: column;
+    }
 }
