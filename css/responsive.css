@@ -1,12 +1,25 @@
 @media screen and (max-width: 1280px) {
     body :is(.app) {
-        height: 100%;
-        grid-template-rows: 60px 740px;
+        height: 100vh;
+        grid-template-rows: 60px calc(100vh - 60px);
     }
     .method-button {
         margin-top: 10px;
     }
-    .method-button > .button {
+    .method-button>.button {
         width: 64%;
+    }
+    .content-form>.form-method {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        margin-top: 20px;
+        width: 60%;
+        height: 60%;
+        background-color: #2B313F;
+    }
+    .form-method :is(#er) {
+        width: 70%;
+        height: 50%;
     }
 }
