@@ -29,3 +29,9 @@
         font-size: 16px;
     }
 }
+
+@media screen and (max-width: 1046px) {
+    .content-form>.form-method {
+        width: 70%;
+    }
+}
