@@ -37,15 +37,20 @@
 }
 
 @media screen and (max-width: 822px) {
-    .main-content > .content-tabs{
-        justify-content: center; 
+    .main-content>.content-tabs {
+        justify-content: center;
         align-items: center;
     }
-    .content-tabs > .tab-btn {
+    .content-tabs>.tab-btn {
         font-size: 14px;
     }
-    .content-form > .form-method {
+    .content-form>.form-method {
         width: 80%;
     }
 }
 
+@media screen and (max-width: 791px) {
+    .content-title :is(.title) {
+        font-size: 18px
+    }
+}
