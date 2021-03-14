@@ -54,3 +54,18 @@
         font-size: 18px
     }
 }
+
+@media screen and (max-width: 769px) {
+    body :is(.app) {
+        height: 1260px;
+        grid-template-areas: "header" "main" "section";
+        grid-template-columns: 100%;
+        grid-template-rows: 60px 1200;
+    }
+    .section-content :is(.content-video) {
+        height: 55%;
+    }
+    .section-content :is(.content-about) {
+        height: 25%;
+    }
+}
