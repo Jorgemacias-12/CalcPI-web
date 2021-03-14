@@ -69,3 +69,9 @@
         height: 25%;
     }
 }
+
+@media screen and (max-width: 715px) {
+    .page-title {
+        font-size: 30px;
+    }   
+}
