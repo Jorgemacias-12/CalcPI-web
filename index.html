@@ -1,29 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title> Calcular PI</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
-    <script src=''></script>
+    <link rel="stylesheet" type='text/css' media='screen' href="css/responsive.css">
 </head>
-    <body>
-        <div class="app">
-            <header class="header">
-                <div class="titlepage-container">
-                    <h1 class="page-title">
-                        Bienvenido a ¿Cómo calcular PI?
-                    </h1>
+
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="titlepage-container">
+                <h1 class="page-title">
+                    Bienvenido a ¿Cómo calcular &pi;?
+                </h1>
+            </div>
+            <ul class="header-list">
+                <li class="list-item">
+                    <a href="https://github.com/Jorgemacias-12" class="item-link" target="_blank">
+                        Perfil de github
+                    </a>
+                </li>
+            </ul>
+        </header>
+        <main class="main">
+            <div class="main-content">
+                <div class="content-tabs">
+                    <button class="tab-btn" id="ma-1">
+                        Método de Arquímedes
+                    </button>
+                    <button class="tab-btn" id="mm-3">
+                        Método de Montecarlo
+                    </button>
+                    <button class="tab-btn" id="mb-2">
+                        Método de Basílea
+                    </button>
                 </div>
-                <ul class="header-list">
-                    <li class="list-item">
-                        <a href="" class="item-link">
-                            Perfil de github
-                        </a>
-                    </li>
-                </ul>
-            </header>
-        </div>
-    </body>
+                <form action="scripts/app.js" class="content-form" id="form" onsubmit="return false;">
+                    <div class="form-method">
+                        <label for="ma-n" class="form-label">
+                            Número de lados máximo del polígono:
+                        </label>
+                        <div class="method-input">
+                            <input type="text" class="input" id="ma-n">
+                        </div>
+                        <div class="method-button">
+                            <button class="button" id="form-btn">
+                                Calcular valor de Pi
+                            </button>
+                        </div>
+
+                        <div id="er">
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </main>
+        <section class="section">
+            <div class="section-content">
+                <div class="content-title">
+                    <h2 class="title">
+                        Acerca de la página
+                    </h2>
+                </div>
+                <div class="content-video">
+                    <iframe width="" height="" src="https://www.youtube.com/embed/DQ5qqHukkAc" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="content-about">
+                    <p class="text">
+                        Esta página te permite introducir números y jugar con las formulas vistas en el video de arriba,
+                        si deseas verlo en youtube y apoyar a su creador puedes hacer clic <a class="link"
+                            href="https://www.youtube.com/watch?time_continue=1&v=DQ5qqHukkAc&feature=emb_logo"
+                            target="_blank">aquí</a>. Sin necesidad de modificar el código que el propio creador
+                        menciona en su video.
+                    </p>
+                    <p class="text">
+                        De todas formas, si deseas ver el código utilizado para la creación de esta página puedes
+                        consultarlo
+                        <a href="https://github.com/Jorgemacias-12/CalcPI-web" target="_blank" rel="noopener noreferrer"
+                            class="link">aquí</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="https://kit.fontawesome.com/7f4f5e3479.js" crossorigin="anonymous"></script>
+    <script src="scripts/result.js"></script>
+    <script src='scripts/app.js'></script>
+</body>
+
 </html>
