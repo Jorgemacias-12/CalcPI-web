@@ -1,0 +1,106 @@
+@media screen and (max-width: 1280px) {
+    body :is(.app) {
+        height: 100vh;
+        grid-template-rows: 60px calc(100vh - 60px);
+    }
+    .method-button {
+        margin-top: 10px;
+    }
+    .method-button>.button {
+        width: 64%;
+    }
+    .content-form>.form-method {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        margin-top: 20px;
+        width: 60%;
+        height: 60%;
+        background-color: #2B313F;
+    }
+    .form-method :is(#er) {
+        width: 70%;
+        height: 50%;
+    }
+}
+
+@media screen and (max-width: 1071px) {
+    .content-about :is(.text) {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 1046px) {
+    .content-form>.form-method {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 822px) {
+    .main-content>.content-tabs {
+        justify-content: center;
+        align-items: center;
+    }
+    .content-tabs>.tab-btn {
+        font-size: 14px;
+    }
+    .content-form>.form-method {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 791px) {
+    .content-title :is(.title) {
+        font-size: 18px
+    }
+}
+
+@media screen and (max-width: 769px) {
+    body :is(.app) {
+        height: 1260px;
+        grid-template-areas: "header" "main" "section";
+        grid-template-columns: 100%;
+        grid-template-rows: 60px 1200;
+    }
+    .section-content :is(.content-video) {
+        height: 55%;
+    }
+    .section-content :is(.content-about) {
+        height: 25%;
+    }
+}
+
+@media screen and (max-width: 715px) {
+    .page-title {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 477px) {
+    body :is(.app) {
+        height: 1600px;
+        grid-template-rows: 120px 600px;
+    }
+    .header {
+        flex-flow: column;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .header>.titlepage-container {
+        width: 100%;
+    }
+    .page-title {
+        font-size: 25px;
+    }
+    .header-list {
+        height: 30%;
+        width: 100%;
+    }
+    .content-form>.form-method {
+        width: 90%;
+    }
+    .form-method>.form-label {
+        font-size: 16px;
+    }
+}
