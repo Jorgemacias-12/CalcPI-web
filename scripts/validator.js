@@ -14,3 +14,9 @@ function setInputFilter(textbox, inputFilter) {
         });
     });
 }
+
+const setValidator = (input) => {
+    setInputFilter(document.getElementById(input), (value) => {
+        return /^-?\d*$/.test(value);
+    });
+}
