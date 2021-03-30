@@ -20,7 +20,7 @@ const createResult = (method, query) => {
                     <div class='result-closeable'>
                         <i class="fas fa-times closeable" onclick='destroyElement();'></i>
                     </div>
-                    <div class='resul-results'>
+                    <div class='result-results'>
                         <p class='text'>
                             Con un polígono de ${query._sides} lados, pi = ${query._pi}
                            +/- ${query._err}. O dicho de otra manera, el valor de pi 
@@ -37,8 +37,8 @@ const createResult = (method, query) => {
                     <div class='result-closeable'>
                         <i class="fas fa-times closeable" onclick='destroyElement();'></i>
                     </div>
-                    <div class='result-results'
-                        <p class='text' style="text-align: center; color:white;">
+                    <div class='result-results'>
+                        <p class='text' style='text-align: center;'>
                             Pi = ${query._pi}
                         </p>
                     </div>
@@ -236,7 +236,7 @@ function manageTabsVisuals() {
         }
         loadTabsContent(1);
         calculateResult(1);
-        setValidator("mb-n")
+        setValidator("mm-n");
     });
     tab_methodBa.addEventListener("click", () => {
         if (tab_methodAr.classList.contains("tab-btn-active")) {
@@ -249,7 +249,7 @@ function manageTabsVisuals() {
         }
         loadTabsContent(2);
         calculateResult(2);
-        setValidator("mm-n");
+        setValidator("mb-n");
     });
 }
 
