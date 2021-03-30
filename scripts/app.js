@@ -8,43 +8,55 @@ const destroyElement = () => {
 
 const cleanInput = (inputToClear) => {
     inputToClear.value = '';
-} 
+}
 
 const createResult = (method, query) => {
     let resultHTML = '';
     switch (method) {
         case 0:
-            resultHTML = 
-            `
-                <div class='result-container'>
-                    <i class="fas fa-times closeable" onclick='destroyElement();'></i>
-                    <p class='resultText'>
-                           Con un polígono de ${query._sides} lados, pi = ${query._pi}
+            resultHTML =
+                `
+                <div class='result'>
+                    <div class='result-closeable'>
+                        <i class="fas fa-times closeable" onclick='destroyElement();'></i>
+                    </div>
+                    <div class='resul-results'>
+                        <p class='text'>
+                            Con un polígono de ${query._sides} lados, pi = ${query._pi}
                            +/- ${query._err}. O dicho de otra manera, el valor de pi 
                            se encuentra entre ${parseFloat(query._pi) + parseFloat(query._err)} y ${parseFloat(query._pi) - parseFloat(query._err)}.
-                    </p>
+                        </p>
+                    </div>
                 </div>
             `;
             return resultHTML;
         case 1:
             resultHTML =
                 `
-                <div class='result-container'>
-                    <i class="fas fa-times closeable" onclick='destroyElement();'></i>
-                    <p class='resultText' style="text-align: center;">
+                <div div class='result'>
+                    <div class='result-closeable'>
+                        <i class="fas fa-times closeable" onclick='destroyElement();'></i>
+                    </div>
+                    <div class='result-results'
+                        <p class='text' style="text-align: center; color:white;">
                             Pi = ${query._pi}
-                    </p>
+                        </p>
+                    </div>
                 </div>
             `;
             return resultHTML;
-        case 2: 
+        case 2:
             resultHTML =
                 `
-                <div class='result-container'>
-                    <i class="fas fa-times closeable" onclick='destroyElement();'></i>
-                    <p class='resultText'>
+                <div class='result'>
+                    <div class='result-closeable'>
+                        <i class="fas fa-times closeable" onclick='destroyElement();'></i>
+                    </div>
+                    <div class='result-results'>
+                        <p class='text'>
                             Pi = ${query._pi} +/- ${query._err} o dicho de otra manera, el valor de pi se encuentra entre ${parseFloat(query._pi + query._err)} y ${parseFloat(query._pi - query._err)}
-                    </p>
+                        </p>
+                    </div>
                 </div>
             `;
             return resultHTML;
@@ -73,7 +85,7 @@ const validateAndShowResult = (inputToValidate) => {
             if (inputToValidate.value == "") { createErrorElement(); }
             if (inputToValidate.value != "") {
                 let resultQuerry = calculateMA(inputToValidate.value);
-                document.getElementById('er').innerHTML = createResult(0,resultQuerry);
+                document.getElementById('er').innerHTML = createResult(0, resultQuerry);
                 cleanInput(inputToValidate);
             }
             break;
