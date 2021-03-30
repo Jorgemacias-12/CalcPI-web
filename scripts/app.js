@@ -1,327 +1,262 @@
-window.onload = () => {
-    document.getElementById('ma-1').classList.add("tab-btn-active");
-    document.getElementById('ma-1').addEventListener("click", () => { MA(); });
-    document.getElementById('mb-2').addEventListener("click", () => { MB(); });
-    document.getElementById('mm-3').addEventListener("click", () => { MM(); });
-    document.getElementById('form-btn').addEventListener("click", () => { calculatePi(1) });
-    setInputFilter(document.getElementById("ma-n"), function (value) {
-        return /^-?\d*$/.test(value);
-    });
+let tab_methodAr = document.getElementById('ma-1');
+let tab_methodMo = document.getElementById('mm-3');
+let tab_methodBa = document.getElementById('mb-2');
+
+const destroyElement = () => {
+    document.getElementById('er').innerHTML = "";
 }
 
-const closeError = (id) => {
-    document.getElementById('cls').addEventListener("click", () => {
-        document.getElementById(id).innerHTML = "";
-    });
+const cleanInput = (inputToClear) => {
+    inputToClear.value = '';
 }
 
-const MA = () => {
-    const method_2 = document.getElementById('mb-2');
-    const method_3 = document.getElementById('mm-3');
-    if (method_2.classList.contains("tab-btn-active")) {
-        method_2.classList.remove("tab-btn-active")
-        document.getElementById('ma-1').classList.add("tab-btn-active");
-    } else if (method_3.classList.contains("tab-btn-active")) {
-        method_3.classList.remove("tab-btn-active")
-        document.getElementById('ma-1').classList.add("tab-btn-active");
-    } else {
-        document.getElementById('ma-1').classList.add("tab-btn-active");
+const createResult = (method, query) => {
+    let resultHTML = '';
+    switch (method) {
+        case 0:
+            resultHTML =
+                `
+                <div class='result'>
+                    <div class='result-closeable'>
+                        <i class="fas fa-times closeable" onclick='destroyElement();'></i>
+                    </div>
+                    <div class='result-results'>
+                        <p class='text'>
+                            Con un polígono de ${query._sides} lados, pi = ${query._pi}
+                           +/- ${query._err}. O dicho de otra manera, el valor de pi 
+                           se encuentra entre ${parseFloat(query._pi) + parseFloat(query._err)} y ${parseFloat(query._pi) - parseFloat(query._err)}.
+                        </p>
+                    </div>
+                </div>
+            `;
+            return resultHTML;
+        case 1:
+            resultHTML =
+                `
+                <div div class='result'>
+                    <div class='result-closeable'>
+                        <i class="fas fa-times closeable" onclick='destroyElement();'></i>
+                    </div>
+                    <div class='result-results'>
+                        <p class='text' style='text-align: center;'>
+                            Pi = ${query._pi}
+                        </p>
+                    </div>
+                </div>
+            `;
+            return resultHTML;
+        case 2:
+            resultHTML =
+                `
+                <div class='result'>
+                    <div class='result-closeable'>
+                        <i class="fas fa-times closeable" onclick='destroyElement();'></i>
+                    </div>
+                    <div class='result-results'>
+                        <p class='text'>
+                            Pi = ${query._pi} +/- ${query._err} o dicho de otra manera, el valor de pi se encuentra entre ${parseFloat(query._pi + query._err)} y ${parseFloat(query._pi - query._err)}
+                        </p>
+                    </div>
+                </div>
+            `;
+            return resultHTML;
     }
-    document.getElementById('form').innerHTML =
-        `
-    <div class="form-method">
-        <label for="ma-n" class="form-label">
-            Número de lados máximo del polígono:
-        </label>
-        <div class="method-input">
-            <input type="text" class="input" id="ma-n">
-        </div>
-        <div class="method-button">
-            <button class="button" id="form-btn">
-                Calcular valor de Pi
-            </button>
-        </div>
-
-        <div id="er">
-
-        </div>
-    </div>
-    `;
-    document.getElementById('form-btn').addEventListener("click", () => { calculatePi(1) });
-    setInputFilter(document.getElementById("ma-n"), function (value) {
-        return /^-?\d*$/.test(value);
-    });
 }
 
-const MM = () => {
-    const method_1 = document.getElementById('ma-1');
-    const method_3 = document.getElementById('mb-2');
-    if (method_1.classList.contains("tab-btn-active")) {
-        method_1.classList.remove("tab-btn-active")
-        document.getElementById('mm-3').classList.add("tab-btn-active");
-    } else if (method_3.classList.contains("tab-btn-active")) {
-        method_3.classList.remove("tab-btn-active")
-        document.getElementById('mm-3').classList.add("tab-btn-active");
-    } else {
-        document.getElementById('mm-3').classList.add("tab-btn-active");
+const createErrorElement = () => {
+    document.getElementById('er').innerHTML =
+        `
+                <div class="error">
+                    <div class="error-closeable">
+                        <i class="fas fa-times closeable" onclick='destroyElement();' aria-hidden="true"></i>
+                    </div>
+                    <div class="error-text">
+                        <p class="text">
+                            Error: el campo está vacio.
+                        </p>
+                    </div>
+                </div>
+    `;
+}
+
+const validateAndShowResult = (inputToValidate) => {
+    switch (inputToValidate.id) {
+        case "ma-n":
+            if (inputToValidate.value == "") { createErrorElement(); }
+            if (inputToValidate.value != "") {
+                let resultQuerry = calculateMA(inputToValidate.value);
+                document.getElementById('er').innerHTML = createResult(0, resultQuerry);
+                cleanInput(inputToValidate);
+            }
+            break;
+        case "mb-n":
+            if (inputToValidate.value == "") { createErrorElement(); }
+            if (inputToValidate.value != "") {
+                let resultQuerry = calculateMB(inputToValidate.value);
+                document.getElementById('er').innerHTML = createResult(1, resultQuerry);
+                cleanInput(inputToValidate);
+            }
+            break;
+        case "mm-n":
+            if (inputToValidate.value == "") { createErrorElement(); }
+            if (inputToValidate.value != "") {
+                let resultQuerry = calculateMM(inputToValidate.value);
+                document.getElementById('er').innerHTML = createResult(2, resultQuerry);
+                cleanInput(inputToValidate);
+            }
+            break;
     }
-    document.getElementById('form').innerHTML =
-        `
-    <div class="form-method">
-        <label for="mb-n" class="form-label">
-            Números de dardos a lazar:
-        </label>
-        <div class="method-input">
-            <input type="text" class="input" id="mb-n">
-        </div>
-        <div class="method-button">
-            <button class="button" id="form-btn">
-                Calcular valor de Pi
-            </button>
-        </div>
-
-        <div id="er">
-
-        </div>
-    </div>
-    `;
-    document.getElementById('form-btn').addEventListener("click", () => { calculatePi(2) });
-    setInputFilter(document.getElementById("mb-n"), function (value) {
-        return /^-?\d*$/.test(value);
-    });
 }
 
-const MB = () => {
-    const method_1 = document.getElementById('ma-1');
-    const method_2 = document.getElementById('mm-3');
-    if (method_1.classList.contains("tab-btn-active")) {
-        method_1.classList.remove("tab-btn-active")
-        document.getElementById('mb-2').classList.add("tab-btn-active");
-    } else if (method_2.classList.contains("tab-btn-active")) {
-        method_2.classList.remove("tab-btn-active")
-        document.getElementById('mb-2').classList.add("tab-btn-active");
-    } else {
-        document.getElementById('mb-2').classList.add("tab-btn-active");
-    }
-    document.getElementById('form').innerHTML =
-        `
-    <div class="form-method">
-        <label for="mb-n" class="form-label">
-            Números de terminos que quieres sumar:
-        </label>
-        <div class="method-input">
-            <input type="text" class="input" id="mm-n">
-        </div>
-        <div class="method-button">
-            <button class="button" id="form-btn">
-                Calcular valor de Pi
-            </button>
-        </div>
-
-        <div id="er">
-
-        </div>
-    </div>
-    `;
-    document.getElementById('form-btn').addEventListener("click", () => { calculatePi(3) });
-    setInputFilter(document.getElementById("mm-n"), function (value) {
-        return /^-?\d*$/.test(value);
-    });
-}
-
-const calculatePi = (method_number) => {
+const calculateResult = (method_number) => {
+    let formButton = document.getElementById('form-btn');
     switch (method_number) {
+        case 0:
+            formButton.addEventListener("click", () => {
+                validateAndShowResult(
+                    document.getElementById('ma-n')
+                );
+            });
+            break;
         case 1:
-            let inputValue = document.getElementById('ma-n').value;
-            if (inputValue == "") {
-                document.getElementById('er').innerHTML =
-                    `
-                <div class="error">
-                    <div class="error-closeable">
-                        <i class="fas fa-times closeable" id="cls"></i>
-                    </div>
-                    <div class="error-text">
-                        <p class="text">
-                            Error: el campo está vacio.
-                        </p>
-                    </div>
-                </div>
-                `;
-                closeError("er");
-            } else {
-                document.getElementById('er').innerHTML =
-                    `<div class="result">
-                    <div class="result-closeable">
-                        <i class="fas fa-times closeable" id="cls" ></i>
-                    </div>
-                    <div class="result-results">
-                        <p class ="text" id="text" ></p>
-                    </div>
-                </div>
-                `;
-                showResult(1);
-                closeError("er");
-            }
+            formButton.addEventListener("click", () => {
+                validateAndShowResult(
+                    document.getElementById('mm-n')
+                );
+            });
             break;
         case 2:
-            if (document.getElementById('mb-n').value == "") {
-                document.getElementById('er').innerHTML =
-                    `
-                <div class="error">
-                    <div class="error-closeable">
-                        <i class="fas fa-times closeable" id="cls"></i>
-                    </div>
-                    <div class="error-text">
-                        <p class="text">
-                            Error: el campo está vacio.
-                        </p>
-                    </div>
-                </div>
-                `;
-                closeError("er");
-            } else {
-                document.getElementById('er').innerHTML =
-                    `<div class="result">
-                    <div class="result-closeable">
-                        <i class="fas fa-times closeable" id="cls" ></i>
-                    </div>
-                    <div class="result-results">
-                        <p class ="text" id="text" ></p>
-                    </div>
-                </div>
-                `;
-                showResult(2);
-                closeError("er");
-            }
-            break;
-        case 3:
-            if (document.getElementById('mm-n').value == "") {
-                document.getElementById('er').innerHTML =
-                    `
-                <div class="error">
-                    <div class="error-closeable">
-                        <i class="fas fa-times closeable" id="cls"></i>
-                    </div>
-                    <div class="error-text">
-                        <p class ="text" id="text" >
-                            Error: el campo está vacio.
-                        </p>
-                    </div>
-                </div>
-                `;
-                closeError("er");
-            } else {
-                document.getElementById('er').innerHTML =
-                    `<div class="result">
-                    <div class="result-closeable">
-                        <i class="fas fa-times closeable" id="cls" ></i>
-                    </div>
-                    <div class="result-results">
-                        <p class ="text" id="text"></p>
-                    </div>
-                </div>
-                `;
-                showResult(3);
-                closeError("er");
-            }
+            formButton.addEventListener("click", () => {
+                validateAndShowResult(
+                    document.getElementById('mb-n')
+                );
+            });
             break;
     }
 }
 
-const showResult = (n) => {
-    let input;
-    let resultObject;
-    let textarea = document.getElementById('text');
-    switch (n) {
+const loadTabsContent = (contentNumber) => {
+    let contentToInner = '';
+    let formElement = document.getElementById('form');;
+    switch (contentNumber) {
+        case 0:
+            contentToInner =
+                `
+                <div class="form-method">
+                    <label for="ma-n" class="form-label">
+                        Número de lados máximo del polígono:
+                    </label>
+                    <div class="method-input">
+                        <input type="text" class="input" id="ma-n">
+                    </div>
+                    <div class="method-button">
+                        <button class="button" id="form-btn">
+                            Calcular valor de Pi
+                        </button>
+                    </div>
+                    <div id="er">
+
+                    </div>
+                </div>
+            `;
+            formElement.innerHTML = contentToInner;
+            break;
         case 1:
-            input = document.getElementById('ma-n').value;
-            resultObject = calculateMA(input);
-            textarea.innerText = `Con un polígono de ${resultObject._sides} lados, obtenemos: Pi = ${resultObject._pi}  +/- ${resultObject._err}. O dicho de otra manera, el valor de pi se encuentra entre ${parseFloat(resultObject._pi + resultObject._err)} y ${parseFloat(resultObject._pi - resultObject._err)}`;
+            contentToInner =
+                `
+                <div class="form-method">
+                    <label for="mb-n" class="form-label">
+                        Números de dardos a lazar:
+                    </label>
+                    <div class="method-input">
+                        <input type="text" class="input" id="mm-n">
+                    </div>
+                    <div class="method-button">
+                        <button class="button" id="form-btn">
+                            Calcular valor de Pi
+                        </button>
+                    </div>
+                    <div id="er">
+
+                    </div>
+                </div>
+            `;
+            formElement.innerHTML = contentToInner;
             break;
         case 2:
-            input = document.getElementById('mb-n').value;
-            resultObject = calculateMM(input);
-            textarea.innerText = `Pi = ${resultObject._pi} +/- ${resultObject._err} o dicho de otra manera, el valor de pi se encuentra entre ${parseFloat(resultObject._pi + resultObject._err)} y ${parseFloat(resultObject._pi - resultObject._err)}`;
-            break;
-        case 3:
-            input = document.getElementById('mm-n').value;
-            resultObject = calculateMB(input);
-            textarea.innerText = `Pi = ${resultObject._pi}`;
+            contentToInner =
+                `
+                <div class="form-method">
+                    <label for="mm-n" class="form-label">
+                        Números de terminos que quieres sumar:
+                    </label>
+                    <div class="method-input">
+                        <input type="text" class="input" id="mb-n">
+                    </div>
+                    <div class="method-button">
+                        <button class="button" id="form-btn">
+                            Calcular valor de Pi
+                        </button>
+                    </div>
+                    <div id="er">
+
+                    </div>
+                </div> 
+                `;
+            formElement.innerHTML = contentToInner;
             break;
     }
 }
 
-let calculateMA = (n) => {
-    const r = 1;
-    let a;
-    let b;
-    a = 4 * Math.sqrt(2) * r;
-    b = 8 * r;
-    let m = 4;
-    while (m * 2 <= n) {
-        b = 2 * a * b / (a + b);
-        a = Math.sqrt(a * b);
-        m = m * 2;
-    }
-    let pi = (a / 2 / r + b / 2 / r) / 2;
-    let err = Math.abs(a / 2 / r - b / 2 / r) / 2;  
-    return new ResultTemplate(m, pi, err);
-}
-
-const calculateMM = (n) => {
-    const r = 1;
-    let x;
-    let y;
-    let cota = 10;
-    let c = 0;
-    let pi_arr = new Array(cota);
-    for (let i = 0; i < cota; i++) {
-        for (let j = 0; j < n; j++) {
-            x = Math.random();
-            y = Math.random();
-            x = x * r;
-            y = y * r;
-            if (x * x + y * y < r * r) {
-                c++
-            }
+function manageTabsVisuals() {
+    tab_methodAr.classList.toggle("tab-btn-active");
+    setValidator("ma-n");
+    calculateResult(0);
+    tab_methodAr.addEventListener("click", () => {
+        if (tab_methodBa.classList.contains("tab-btn-active")) {
+            tab_methodBa.classList.remove("tab-btn-active");
+            tab_methodAr.classList.add("tab-btn-active");
         }
-        pi_arr[i] = 4 * c / n;
-        c = 0;
-    }
-    let pi = 0;
-    let err = 0;
-    for (let i = 0; i < cota; i++) {
-        pi = pi_arr[i] / cota + pi;
-    }
-    for (let i = 0; i < cota; i++) {
-        err = err + Math.pow(pi - pi_arr[i], 2) / cota;
-    }
-    err = Math.sqrt(err);
-    return new ResultTemplate(null, pi, err);
-}
-
-const calculateMB = (n) => {
-    let s = 0;
-    for (let i = 0; i < n; i++) {
-        s = s + 1 / Math.pow(i + 1, 2);
-    }
-    let pi = Math.sqrt(6 * s);
-    return new ResultTemplate(null, pi, null);
-}
-
-function setInputFilter(textbox, inputFilter) {
-    ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
-        textbox.addEventListener(event, function () {
-            if (inputFilter(this.value)) {
-                this.oldValue = this.value;
-                this.oldSelectionStart = this.selectionStart;
-                this.oldSelectionEnd = this.selectionEnd;
-            } else if (this.hasOwnProperty("oldValue")) {
-                this.value = this.oldValue;
-                this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-            } else {
-                this.value = "";
-            }
-        });
+        if (tab_methodMo.classList.contains("tab-btn-active")) {
+            tab_methodMo.classList.remove("tab-btn-active");
+            tab_methodAr.classList.add("tab-btn-active");
+        }
+        loadTabsContent(0);
+        calculateResult(0);
+        setValidator("ma-n");
     });
+    tab_methodMo.addEventListener("click", () => {
+        if (tab_methodAr.classList.contains("tab-btn-active")) {
+            tab_methodAr.classList.remove("tab-btn-active");
+            tab_methodMo.classList.add("tab-btn-active");
+        }
+        if (tab_methodBa.classList.contains("tab-btn-active")) {
+            tab_methodBa.classList.remove("tab-btn-active");
+            tab_methodMo.classList.add("tab-btn-active");
+        }
+        loadTabsContent(1);
+        calculateResult(1);
+        setValidator("mm-n");
+    });
+    tab_methodBa.addEventListener("click", () => {
+        if (tab_methodAr.classList.contains("tab-btn-active")) {
+            tab_methodAr.classList.remove("tab-btn-active");
+            tab_methodBa.classList.add("tab-btn-active");
+        }
+        if (tab_methodMo.classList.contains("tab-btn-active")) {
+            tab_methodMo.classList.remove("tab-btn-active");
+            tab_methodBa.classList.add("tab-btn-active");
+        }
+        loadTabsContent(2);
+        calculateResult(2);
+        setValidator("mb-n");
+    });
+}
+
+function app() {
+    manageTabsVisuals();
+}
+
+window.onload = () => {
+    app();
 }
