@@ -8,97 +8,26 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
     <link rel="stylesheet" type='text/css' media='screen' href="css/responsive.css">
+    <script src="https://kit.fontawesome.com/7f4f5e3479.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
-    <div class="app">
-        <header class="header">
-            <div class="titlepage-container">
-                <h1 class="page-title">
-                    Bienvenido a ¿Cómo calcular &pi;?
-                </h1>
-            </div>
-            <ul class="header-list">
-                <li class="list-item">
-                    <a href="https://github.com/Jorgemacias-12" class="item-link" target="_blank">
-                        Perfil de github
-                    </a>
-                </li>
-            </ul>
-        </header>
-        <main class="main">
-            <div class="main-content">
-                <div class="content-tabs">
-                    <button class="tab-btn" id="ma-1">
-                        Método de Arquímedes
-                    </button>
-                    <button class="tab-btn" id="mm-3">
-                        Método de Montecarlo
-                    </button>
-                    <button class="tab-btn" id="mb-2">
-                        Método de Basílea
-                    </button>
-                </div>
-                <form action="scripts/app.js" class="content-form" id="form" onsubmit="return false;">
-                    <div class="form-method">
-                        <label for="ma-n" class="form-label">
-                            Número de lados máximo del polígono:
-                        </label>
-                        <div class="method-input">
-                            <input type="text" class="input" id="ma-n">
-                        </div>
-                        <div class="method-button">
-                            <button class="button" id="form-btn">
-                                Calcular valor de Pi
-                            </button>
-                        </div>
+<body id="app">
 
-                        <div id="er">
+    <header class="header">
+        <h1 class="title">¿Como calcular &pi;?</h1>
+    </header>
 
-                        </div>
+    <nav class="navbar">
+        <a href="" class="tab">item 1</a>
+        <a href="" class="tab">item 2</a>
+        <a href="" class="tab">item 3</a>
+        <a href="" class="tab">item 4</a>
+    </nav>
 
-                    </div>
-                </form>
-            </div>
-        </main>
-        <section class="section">
-            <div class="section-content">
-                <div class="content-title">
-                    <h2 class="title">
-                        Acerca de la página
-                    </h2>
-                </div>
-                <div class="content-video">
-                    <iframe width="" height="" src="https://www.youtube.com/embed/DQ5qqHukkAc" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="content-about">
-                    <p class="text">
-                        El propósito de esta página es permitir que se calcule el valor de &pi; sin necesidad de manejar
-                        código siendo más
-                        amable con el usuario.
-                    </p>
-                    <p class="text">
-                        Si deseas ver el video completo puedes ir a verlo haciendo clic <a
-                            href="https://www.youtube.com/watch?v=DQ5qqHukkAc&t=1s " target="_blank"
-                            rel="noopener noreferrer" class="link">aquí</a>
-                    </p>
-                    <p class="text">
-                        Si deseas ver el código requerido para la creación de esta página puedes encontrarlo <a
-                            href="https://github.com/Jorgemacias-12/CalcPI-web" target="_blank"
-                            rel="noopener noreferrer" class="link">aquí</a>.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </div>
-    <script src="https://kit.fontawesome.com/7f4f5e3479.js" crossorigin="anonymous"></script>
-    <script src="scripts/validator.js"></script>
-    <script src="scripts/methods.js"></script>
-    <script src="scripts/result.js"></script>
-    <script src='scripts/app.js'></script>
+    <main class="main" id="page-content">
+
+    </main>
+
 </body>
 
 </html>
