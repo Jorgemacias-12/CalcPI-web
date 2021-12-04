@@ -1,4 +1,4 @@
-const insertErrorComponent = (error) => {
+const insertErrorComponent = (error, inputElement) => {
     const xml = new XMLHttpRequest();
     xml.open('GET', `../templates/error.html`, true);
     xml.onreadystatechange = () => {
@@ -14,6 +14,7 @@ const insertErrorComponent = (error) => {
             const errorWrapper = document.getElementById('error-container');
             error.style.animation = 'error-close 300ms ease-in-out';
             error.addEventListener('animationend', () => {
+                inputElement.value = '';
                 errorWrapper.removeChild(error);
             });
         });
@@ -29,10 +30,10 @@ const initMethod = () => {
     const submitButton = document.getElementById('send');
     submitButton.addEventListener('click', () => {
         if (input.value == "") {
-            insertErrorComponent("El campo se encuentra vacio");
+            insertErrorComponent("El campo se encuentra vacio", input);
         }
         if (!input.value.match(/^[0-9]*$/)) {
-            insertErrorComponent("El campo solo acepta numeros");
+            insertErrorComponent("El campo solo acepta numeros", input);
         }
     });
 }
