@@ -6,9 +6,13 @@ const insertErrorComponent = (error) => {
         errorWrapper.innerHTML = xml.responseText;
     }
     xml.addEventListener('loadend', () => {
-        const closeButton = document.getElementById('close-error');
+        const closeButton = document.getElementById('error-close');
         const errorText = document.getElementById('description-error');
         errorText.innerHTML = error;
+        closeButton.addEventListener('click', () => {
+            const errorWrapper = document.getElementById('error-container');
+            errorWrapper.innerHTML = '';
+        });
     });
     xml.send();
 }
