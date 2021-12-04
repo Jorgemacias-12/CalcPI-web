@@ -1,4 +1,3 @@
-
 const insertContent = (buttonIndex, wrapper) => {
     const xml = new XMLHttpRequest();
     xml.open('GET', `../templates/${buttonIndex}.html`, true);
