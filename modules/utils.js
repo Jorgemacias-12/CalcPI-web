@@ -2,7 +2,7 @@ const insertErrorComponent = (error, inputElement) => {
     const xml = new XMLHttpRequest();
     xml.open('GET', `../templates/error.html`, true);
     xml.onreadystatechange = () => {
-        const errorWrapper = document.getElementById('error-container');
+        const errorWrapper = document.getElementById('wrapper');
         errorWrapper.innerHTML = xml.responseText;
     }
     xml.addEventListener('loadend', () => {
@@ -11,7 +11,7 @@ const insertErrorComponent = (error, inputElement) => {
         errorText.innerHTML = error;
         closeButton.addEventListener('click', () => {
             const error = document.getElementById('error');
-            const errorWrapper = document.getElementById('error-container');
+            const errorWrapper = document.getElementById('wrapper');
             error.style.animation = 'error-close 300ms ease-in-out';
             error.addEventListener('animationend', () => {
                 inputElement.value = '';
@@ -24,8 +24,6 @@ const insertErrorComponent = (error, inputElement) => {
 
 
 const initMethod = () => {
-    const wrapper = document.getElementById('error-container');
-    const error = document.getElementById('error');
     const input = document.getElementsByClassName('input')[0];
     const submitButton = document.getElementById('send');
     submitButton.addEventListener('click', () => {
