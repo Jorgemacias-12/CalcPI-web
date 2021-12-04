@@ -10,8 +10,12 @@ const insertErrorComponent = (error) => {
         const errorText = document.getElementById('description-error');
         errorText.innerHTML = error;
         closeButton.addEventListener('click', () => {
+            const error = document.getElementById('error');
             const errorWrapper = document.getElementById('error-container');
-            errorWrapper.innerHTML = '';
+            error.style.animation = 'error-close 300ms ease-in-out';
+            error.addEventListener('animationend', () => {
+                errorWrapper.removeChild(error);
+            });
         });
     });
     xml.send();
@@ -19,9 +23,11 @@ const insertErrorComponent = (error) => {
 
 
 const initMethod = () => {
+    const wrapper = document.getElementById('error-container');
+    const error = document.getElementById('error');
     const input = document.getElementsByClassName('input')[0];
     const submitButton = document.getElementById('send');
-    submitButton.addEventListener('click', (event) => {
+    submitButton.addEventListener('click', () => {
         if (input.value == "") {
             insertErrorComponent("El campo se encuentra vacio");
         }
@@ -39,7 +45,7 @@ const insertContent = (buttonIndex, wrapper) => {
         wrapper.id = `${buttonIndex}`;
     }
     xml.addEventListener('loadend', () => {
-        if (buttonIndex >= 0 && buttonIndex<= 2) {
+        if (buttonIndex >= 0 && buttonIndex <= 2) {
             initMethod();
         }
     });
