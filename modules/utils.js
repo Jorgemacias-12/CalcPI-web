@@ -1,3 +1,32 @@
+const insertErrorComponent = (error) => {
+    const xml = new XMLHttpRequest();
+    xml.open('GET', `../templates/error.html`, true);
+    xml.onreadystatechange = () => {
+        const errorWrapper = document.getElementById('error-container');
+        errorWrapper.innerHTML = xml.responseText;
+    }
+    xml.addEventListener('loadend', () => {
+        const closeButton = document.getElementById('close-error');
+        const errorText = document.getElementById('description-error');
+        errorText.innerHTML = error;
+    });
+    xml.send();
+}
+
+
+const initMethod = () => {
+    const input = document.getElementsByClassName('input')[0];
+    const submitButton = document.getElementById('send');
+    submitButton.addEventListener('click', (event) => {
+        if (input.value == "") {
+            insertErrorComponent("El campo se encuentra vacio");
+        }
+        if (!input.value.match(/^[0-9]*$/)) {
+            insertErrorComponent("El campo solo acepta numeros");
+        }
+    });
+}
+
 const insertContent = (buttonIndex, wrapper) => {
     const xml = new XMLHttpRequest();
     xml.open('GET', `../templates/${buttonIndex}.html`, true);
@@ -5,6 +34,11 @@ const insertContent = (buttonIndex, wrapper) => {
         wrapper.innerHTML = xml.responseText;
         wrapper.id = `${buttonIndex}`;
     }
+    xml.addEventListener('loadend', () => {
+        if (buttonIndex >= 0 && buttonIndex<= 2) {
+            initMethod();
+        }
+    });
     xml.send();
 }
 
@@ -55,7 +89,7 @@ const initNavigationBar = () => {
     }
 }
 
-const initView =  () => {
+const initView = () => {
     insertContent(0, document.getElementById('wrapper'));
 }
 
