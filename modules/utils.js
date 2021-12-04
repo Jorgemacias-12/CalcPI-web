@@ -1,3 +1,28 @@
+const insertResultComponent = (input) => {
+    const xml = new XMLHttpRequest();
+    xml.open('GET', `../templates/result.html`, true);
+    xml.onreadystatechange = () => {
+        const wrapper = document.getElementById('wrapper');
+        wrapper.innerHTML = xml.responseText;
+    }
+    xml.addEventListener('loadend', () => {
+        const closeButton = document.getElementById('result-close');
+        const resultText = document.getElementById('result-text');
+        resultText.innerHTML = input.value; // recordar llamar funcion
+        closeButton.addEventListener('click', () => {
+            const result = document.getElementById('result');
+            const wrapper = document.getElementById('wrapper');
+            result.style.animation = 'result-close 300ms ease-in-out';
+            result.addEventListener('animationend', () => {
+                input.value = '';
+                wrapper.removeChild(result);
+            });
+        });
+    });
+    xml.send();
+}
+
+
 const insertErrorComponent = (error, inputElement) => {
     const xml = new XMLHttpRequest();
     xml.open('GET', `../templates/error.html`, true);
@@ -32,6 +57,9 @@ const initMethod = () => {
         }
         if (!input.value.match(/^[0-9]*$/)) {
             insertErrorComponent("El campo solo acepta numeros", input);
+        }
+        if (input.value != "" && input.value.match(/^[0-9]*$/)) {
+            insertResultComponent(input);
         }
     });
 }
