@@ -8,7 +8,17 @@ const insertResultComponent = (input) => {
     xml.addEventListener('loadend', () => {
         const closeButton = document.getElementById('result-close');
         const resultText = document.getElementById('result-text');
-        resultText.innerHTML = input.value; // recordar llamar funcion
+        switch (input.id) {
+            case 'methodInputBA':
+                resultText.innerHTML = `Pi = ${calculateMA(input.value)}`;
+                break;
+            case 'methodInputMO':
+                resultText.innerHTML = `Pi = ${calculateMO(input.value)}`;
+                break;
+            case 'methodInputMB':
+                resultText.innerHTML = `Pi = ${calculateMB(input.value)}`;
+                break;
+        }
         closeButton.addEventListener('click', () => {
             const result = document.getElementById('result');
             const wrapper = document.getElementById('wrapper');
