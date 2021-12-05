@@ -12,10 +12,10 @@ let calculateMA = (number) => {
     }
     let pi = (a / 2 / r + b / 2 / r) / 2;
     let err = Math.abs(a / 2 / r - b / 2 / r) / 2;
-    return new ResultTemplate(m, pi, err);
+    return pi;
 }
 
-const calculateMM = (number) => {
+const calculateMO = (number) => {
     const r = 1;
     let x;
     let y;
@@ -44,7 +44,7 @@ const calculateMM = (number) => {
         err = err + Math.pow(pi - pi_arr[i], 2) / cota;
     }
     err = Math.sqrt(err);
-    return new ResultTemplate(null, pi, err);
+    return pi;
 }
 
 const calculateMB = (number) => {
@@ -53,5 +53,5 @@ const calculateMB = (number) => {
         s = s + 1 / Math.pow(i + 1, 2);
     }
     let pi = Math.sqrt(6 * s);
-    return new ResultTemplate(null, pi, null);
+    return pi;
 }
