@@ -137,7 +137,9 @@ const initNavigationBar = () => {
 }
 
 const initView = () => {
-    insertContent(0, document.getElementById('wrapper'));
+    const wrapper = document.getElementById('wrapper');
+    wrapper.id = "0";
+    insertContent(0, wrapper);
 }
 
 const initApp = () => {
