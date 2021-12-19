@@ -79,7 +79,10 @@ const insertContent = (buttonIndex, wrapper) => {
     xml.open('GET', `../templates/${buttonIndex}.html`, true);
     xml.onreadystatechange = () => {
         wrapper.innerHTML = xml.responseText;
-        wrapper.id = `${buttonIndex}`;
+        const container = document.getElementsByClassName('inserted-component');
+        if (container == null) throw new Error("Non existent container :C");
+        if (buttonIndex == 3) container[0].id = 'lg-container';
+        else container[0].id = 'md-container';
     }
     xml.addEventListener('loadend', () => {
         if (buttonIndex >= 0 && buttonIndex <= 2) {
@@ -119,10 +122,7 @@ const themeBehaviour = (theme) => {
 }
 
 const setTheme = () => {
-    theme = localStorage.getItem('theme');
-    let link = document.getElementById('theme-link');
-    link.href = `css/${theme}.css`;
-    document.head.appendChild(link);
+    
 }
 
 const initNavigationBar = () => {
