@@ -1,0 +1,28 @@
+nav.nav-bar.dark {
+    background-color: var(--base-bg-dark);
+    transition: 0.2s all;
+}
+
+button.nav-btn.dark {
+    background-color: var(--navbar-btn-dark);
+    color: var(--text-fg-dark);
+    transition: 0.5s all;
+}
+
+i#theme.dark {
+    background-color: var(--navbar-btn-dark);
+    color: var(--text-fg-dark);
+    transition: 0.5s all;
+}
+
+main.content.dark {
+    background-color: var(--base-bg-dark);
+    transition: 0.2s all;
+}
+
+article.inserted-component.dark {
+    background-color: var(--lvl2-bg-dark);
+    color: var(--text-fg-dark);
+    box-shadow: 10px 10px 5px 0px var(--shadow-dark);
+    transition: 0.5s all;
+}
