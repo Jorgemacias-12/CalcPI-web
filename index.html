@@ -6,12 +6,16 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title> Calcular PI </title>
-    <link rel="stylesheet" type='text/css' media='screen' href="css/styles.css">
-    <link rel="stylesheet" type='text/css' media='screen' href="css/light.css" id="theme-link">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7f4f5e3479.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
     <script src="modules/methods.js"></script>
     <script src="modules/utils.js"></script>
     <script src="modules/index.js"></script>
-    <script src="https://kit.fontawesome.com/7f4f5e3479.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -20,15 +24,15 @@
             ¿Cómo calcular PI?
         </h1>
     </header>
-    <nav class="nav-bar">
-        <button class="nav-btn active">Método Arquimedes</button>
-        <button class="nav-btn">Método Montecarlo</button>
-        <button class="nav-btn">Método Basilea</button>
-        <button class="nav-btn">Acerca de</button>
-        <i class="theme-icon fas fa-moon" id="theme"></i>
+    <nav class="nav-bar" id="nav-bar">
+        <button class="nav-btn light active">Método Arquimedes</button>
+        <button class="nav-btn light">Método Montecarlo</button>
+        <button class="nav-btn light">Método Basilea</button>
+        <button class="nav-btn light">Acerca de</button>
+        <i class="theme-icon light fas fa-moon" id="theme"></i>
     </nav>
     <main class="content" id="wrapper">
     </main>
 </body>
-    
+
 </html>
