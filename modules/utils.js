@@ -79,6 +79,7 @@ const insertContent = (buttonIndex, wrapper) => {
     xml.open('GET', `../templates/${buttonIndex}.html`, true);
     xml.onreadystatechange = () => {
         wrapper.innerHTML = xml.responseText;
+        wrapper.id = `${buttonIndex}`;
     }
     xml.addEventListener('loadend', () => {
         const container = document.getElementsByClassName('inserted-component');
@@ -136,10 +137,11 @@ const themeBehaviour = (theme) => {
 
 const setTheme = () => {
     let navbar = document.getElementById('nav-bar');
-    let wrapper = document.getElementById('wrapper');
+    let wrapper = document.querySelectorAll('.content')[0];
     let selectedTheme = localStorage.getItem('theme');
     let navButtons = document.querySelectorAll('.nav-btn');
     let inserted_content = document.querySelectorAll('.inserted-component')
+    let inputs = document.querySelectorAll('.input');
     for (let button of navButtons) {
         if (selectedTheme === 'dark') {
             button.classList.remove('light');
@@ -174,6 +176,16 @@ const setTheme = () => {
         navbar.classList.add('dark');
         wrapper.classList.remove('light');
         wrapper.classList.add('dark');
+    }
+    for (let input of inputs) {
+        if (selectedTheme === 'light') {
+            input.classList.remove('dark');
+            input.classList.add('light');
+        }
+        if (selectedTheme === 'dark') {
+            input.classList.remove('light');
+            input.classList.add('dark');
+        }
     }
 }
 
