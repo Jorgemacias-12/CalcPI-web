@@ -79,12 +79,23 @@ const insertContent = (buttonIndex, wrapper) => {
     xml.open('GET', `../templates/${buttonIndex}.html`, true);
     xml.onreadystatechange = () => {
         wrapper.innerHTML = xml.responseText;
-        const container = document.getElementsByClassName('inserted-component');
-        if (container == null) throw new Error("Non existent container :C");
-        if (buttonIndex == 3) container[0].id = 'lg-container';
-        else container[0].id = 'md-container';
     }
     xml.addEventListener('loadend', () => {
+        const container = document.getElementsByClassName('inserted-component');
+        if (container == null || container == undefined) throw new Error("Non existent container :C");
+        else {
+            if (buttonIndex == 3) container[0].id = 'lg-container';
+            else container[0].id = 'md-container';
+            let currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'light') {
+                container[0].classList.remove('dark');
+                container[0].classList.add('light')
+            }
+            if (currentTheme === 'dark') {
+                container[0].classList.remove('light')
+                container[0].classList.add('dark');
+            }
+        }
         if (buttonIndex >= 0 && buttonIndex <= 2) {
             initMethod();
         }
@@ -104,17 +115,19 @@ const createActiveState = (event) => {
 const themeBehaviour = (theme) => {
     isChecked = !isChecked;
     if (isChecked) {
+        theme.classList.add('dark');
         theme.classList.add('fa-sun');
         theme.classList.remove('fa-moon');
-        theme.style.color = '#fff';
+        theme.classList.remove('light');
         localStorage.setItem('theme', 'dark');
         localStorage.setItem('isChecked', true);
         setTheme();
     }
     if (!isChecked) {
         theme.classList.add('fa-moon');
+        theme.classList.add('light');
         theme.classList.remove('fa-sun');
-        theme.style.color = '#000';
+        theme.classList.remove('dark');
         localStorage.setItem('theme', 'light');
         localStorage.setItem('isChecked', false);
         setTheme();
@@ -122,7 +135,46 @@ const themeBehaviour = (theme) => {
 }
 
 const setTheme = () => {
-    
+    let navbar = document.getElementById('nav-bar');
+    let wrapper = document.getElementById('wrapper');
+    let selectedTheme = localStorage.getItem('theme');
+    let navButtons = document.querySelectorAll('.nav-btn');
+    let inserted_content = document.querySelectorAll('.inserted-component')
+    for (let button of navButtons) {
+        if (selectedTheme === 'dark') {
+            button.classList.remove('light');
+            button.classList.add('dark');
+        }
+        if (selectedTheme === 'light') {
+            button.classList.remove('dark');
+            button.classList.add('light');
+        }
+    }
+    if (inserted_content == null || inserted_content == undefined) {
+        throw new Error('Content not available :C');
+    }
+    for (let component of inserted_content) {
+        if (selectedTheme === 'dark') {
+            component.classList.remove('light');
+            component.classList.add('dark');
+        }
+        if (selectedTheme === 'light') {
+            component.classList.remove('dark');
+            component.classList.add('light');
+        }
+    }
+    if (selectedTheme === 'light') {
+        navbar.classList.remove('dark');
+        navbar.classList.add('light');
+        wrapper.classList.remove('dark');
+        wrapper.classList.add('light');
+    }
+    if (selectedTheme === 'dark') {
+        navbar.classList.remove('light');
+        navbar.classList.add('dark');
+        wrapper.classList.remove('light');
+        wrapper.classList.add('dark');
+    }
 }
 
 const initNavigationBar = () => {
@@ -137,13 +189,11 @@ const initNavigationBar = () => {
 }
 
 const initView = () => {
-    const wrapper = document.getElementById('wrapper');
-    wrapper.id = "0";
     insertContent(0, wrapper);
 }
 
 const initApp = () => {
-    setTheme();
     initNavigationBar();
     initView();
+    setTheme();
 }
