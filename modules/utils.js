@@ -74,6 +74,7 @@ const initMethod = () => {
     });
 }
 
+
 const insertContent = (buttonIndex, wrapper) => {
     const xml = new XMLHttpRequest();
     xml.open('GET', `../templates/${buttonIndex}.html`, true);
@@ -82,6 +83,7 @@ const insertContent = (buttonIndex, wrapper) => {
         wrapper.id = `${buttonIndex}`;
     }
     xml.addEventListener('loadend', () => {
+        const inputs = document.querySelectorAll('.input');
         const container = document.getElementsByClassName('inserted-component');
         if (container == null || container == undefined) throw new Error("Non existent container :C");
         else {
@@ -91,10 +93,18 @@ const insertContent = (buttonIndex, wrapper) => {
             if (currentTheme === 'light') {
                 container[0].classList.remove('dark');
                 container[0].classList.add('light')
+                for (let input of inputs) {
+                    input.classList.remove('dark');
+                    input.classList.add('light');
+                }
             }
             if (currentTheme === 'dark') {
                 container[0].classList.remove('light')
                 container[0].classList.add('dark');
+                for (let input of inputs) {
+                    input.classList.remove('light');
+                    input.classList.add('dark');
+                }
             }
         }
         if (buttonIndex >= 0 && buttonIndex <= 2) {
