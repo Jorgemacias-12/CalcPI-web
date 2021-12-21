@@ -26,3 +26,8 @@ article.inserted-component.dark {
     box-shadow: 10px 10px 5px 0px var(--shadow-dark);
     transition: 0.5s all;
 }
+
+input.input.dark {
+    background-color: var(--input-bg-dark);
+    color: var(--text-fg-dark);
+}
