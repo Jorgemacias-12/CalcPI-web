@@ -150,7 +150,6 @@ span.result-description {
 article.inserted-component#lg-container {
     overflow-y: auto;
     overflow-x: hidden;
-    resize: horizontal;
 }
 
 h3.subtitle {
