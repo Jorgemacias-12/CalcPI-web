@@ -1,7 +1,6 @@
 @import url('dark.css') screen;
 @import url('light.css') screen;
 @import url('content.css') screen;
-@import url('responsive.css') screen;
 
 :root {
     --header-bg: #7F7EFF;
@@ -83,7 +82,6 @@ button.nav-btn {
     cursor: pointer;
     background-color: transparent;
     background-clip: border-box;
-    font-size: clamp(12px, 1rem, 2rem);
 }
 
 button.nav-btn:focus-visible {

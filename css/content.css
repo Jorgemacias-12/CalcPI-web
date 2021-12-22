@@ -52,6 +52,10 @@ button.btn-form:focus-visible {
     border: 2px solid var(--active-bg);
 }
 
+button.btn-form:active {
+    transform: scale(0.9);
+}
+
 section#wrapper.wrapper {
     display: flex;
     justify-content: center;
