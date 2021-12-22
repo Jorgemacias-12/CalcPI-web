@@ -1,6 +1,9 @@
+let route;
+
 const insertResultComponent = (input) => {
+    route = window.location.href;
     const xml = new XMLHttpRequest();
-    xml.open('GET', `../templates/result.html`, true);
+    xml.open('GET', `${route}/templates/result.html`, true);
     xml.onreadystatechange = () => {
         const wrapper = document.getElementById('wrapper');
         wrapper.innerHTML = xml.responseText;
@@ -34,8 +37,9 @@ const insertResultComponent = (input) => {
 
 
 const insertErrorComponent = (error, inputElement) => {
+    route = window.location.href;
     const xml = new XMLHttpRequest();
-    xml.open('GET', `../templates/error.html`, true);
+    xml.open('GET', `${route}/templates/error.html`, true);
     xml.onreadystatechange = () => {
         const errorWrapper = document.getElementById('wrapper');
         errorWrapper.innerHTML = xml.responseText;
@@ -76,8 +80,9 @@ const initMethod = () => {
 
 
 const insertContent = (buttonIndex, wrapper) => {
+    route = window.location.href;
     const xml = new XMLHttpRequest();
-    xml.open('GET', `../templates/${buttonIndex}.html`, true);
+    xml.open('GET', `${route}/templates/${buttonIndex}.html`, true);
     xml.onreadystatechange = () => {
         wrapper.innerHTML = xml.responseText;
         wrapper.id = `${buttonIndex}`;
