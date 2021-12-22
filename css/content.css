@@ -73,6 +73,10 @@ span.error.icon-container {
     cursor: pointer;
 }
 
+i#error-close:active {
+    transform: scale(0.9);
+}
+
 p.error-text {
     display: flex;
     justify-content: center;
@@ -113,6 +117,10 @@ div.result {
 
 span.result.icon-container {
     cursor: pointer;
+}
+
+i#result-close:active {
+    transform: scale(0.9);
 }
 
 p.result-text {
