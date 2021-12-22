@@ -61,7 +61,6 @@
         border-bottom-left-radius: 0;
     }
 
-
     i.theme-icon {
         margin-top: 10px;
     }
@@ -72,7 +71,7 @@
     article.inserted-component#md-container {
         width: 50vw;
         height: 40vh;
-    }   
+    }
 
     input.input {
         width: 50%;
@@ -90,6 +89,31 @@
     article.inserted-component#lg-container {
         width: 60vw;
         height: 75vh;
+    }
+
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1600px) {
+    article.inserted-component#md-container {
+        width: 40vw;
+        height: 40vh;
+    }
+
+    input.input {
+        width: 30%;
+    }
+
+    div.error {
+        width: 40%;
+    }
+
+    div.result {
+        width: 40%;
+    }
+
+    article.inserted-component#lg-container {
+        width: 50vw;
+        height: 60vh;
     }
 
 }
